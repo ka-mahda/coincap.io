@@ -168,7 +168,7 @@ header #navbar #navbarInner #rightSideNavbar > svg {
   height: 100%;
   width: 100%;
   max-width: var(--innerWidth);
-  padding-top: 52px;
+  /* padding-top: 52px; */
 }
 #blueBackground .blueBackgroundInner div:nth-child(1) {
   padding-left: 16px;
