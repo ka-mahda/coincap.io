@@ -1,0 +1,480 @@
+:root {
+  --innerWidth: 1127px;
+  --whiteBackground: #fff;
+  --grayBackground: rgb(236, 239, 241);
+  --greenBtn: rgb(24, 198, 131);
+  --blueBackground: linear-gradient(
+      to right,
+      rgb(63, 81, 181),
+      rgb(100, 181, 246)
+    )
+    rgb(255, 255, 255);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+}
+
+body,
+html {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.greenBtn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: var(--greenBtn);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 15px -3px;
+  transition: all 0.4s ease;
+}
+.greenBtn:hover {
+  transform: translateY(-3px);
+  transition: all 0.4s ease;
+}
+
+header {
+  width: 100%;
+  position: relative;
+}
+
+/*  navbar */
+header #navbar {
+  position: fixed;
+  background-color: var(--whiteBackground);
+  height: 4rem;
+  width: 100%;
+  z-index: 3;
+  position: fixed;
+}
+
+header #navbar #navbarInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  max-width: var(--innerWidth);
+}
+/*  navbar-leftSide */
+header #navbar #navbarInner #leftSideNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header #navbar #navbarInner #leftSideNavbar a {
+  background: none;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+header #navbar #navbarInner #leftSideNavbar a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*  navbar-midSide */
+
+header #navbar #navbarInner #midSideNavbar > a > img {
+  width: 112px;
+  height: 4rem;
+  padding: 12px 16px;
+}
+
+/*  navbar-rightSide */
+header #navbar #navbarInner #rightSideNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header #navbar #navbarInner #rightSideNavbar > div,
+header #navbar #navbarInner #rightSideNavbar > svg,
+header #navbar #navbarInner #rightSideNavbar > button {
+  margin: 12px 0px;
+}
+/*  navbar-rightSide-search */
+header #navbar #navbarInner #rightSideNavbar > div.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header #navbar #navbarInner #rightSideNavbar > div.search > input.searchInput {
+  height: 28px;
+  width: 30px;
+  border: none;
+}
+
+header #navbar #navbarInner #rightSideNavbar > div.search > .searchInput:focus {
+  width: 180px;
+  border: 2px solid black;
+  transition: all 0.4s ease-in;
+}
+
+header #navbar #navbarInner #rightSideNavbar > div.search .btnSearch {
+  border: none;
+  padding: 0;
+  background: white;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  cursor: pointer;
+}
+
+header #navbar #navbarInner #rightSideNavbar > svg {
+  margin: 12px 32px;
+}
+
+/* main-blue background under table */
+#blueBackground {
+  background: var(--blueBackground);
+  height: 15.5rem;
+  width: 100%;
+}
+
+#blueBackground .blueBackgroundInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin:0 auto;
+  height: 100%;
+  width: 100%;
+  max-width: var(--innerWidth);
+  padding-top: 52px;
+}
+#blueBackground .blueBackgroundInner div:nth-child(1) {
+  padding-left: 16px;
+}
+#blueBackground .blueBackgroundInner div:nth-child(6) {
+  padding-right: 16px;
+}
+#blueBackground .blueBackgroundInner > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+#blueBackground .blueBackgroundInner div > div {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+/* main-table */
+#table {
+  background: var(--grayBackground);
+  width: 100%;
+}
+#table .tableInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  /* height: 2500px; */
+  width: 100%;
+  max-width: var(--innerWidth);
+}
+#table .tableInner .tableData {
+  transform: translateY(-100px);
+  width: 100%;
+  background-color: #fff;
+  /* height: 500px; */
+}
+
+/* main--headers */
+.tableHeader {
+  display: flex;
+  background-color: #fafafa;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+.row:hover {
+  background-color: #ccc;
+}
+
+/* #table .tableInner .tableData .tableRow{
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  font-weight: 700;
+  } */
+
+.smallBox {
+  width: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+}
+.mediumBox {
+  width: 12%;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 12px 10px;
+}
+.largeBox {
+  width: 20%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 12px 10px;
+}
+
+.smallText {
+  font-size: 11.2px;
+  font-weight: normal;
+}
+.mediumText {
+  font-size: 13px;
+  font-weight: normal;
+  text-decoration: none;
+}
+.largeText {
+  font-size: 14px;
+  font-weight: normal;
+}
+.blackText {
+  color: black;
+}
+.grayText {
+  color: rgba(0, 0, 0, 0.6);
+}
+.greenText {
+  color: #18c683;
+}
+
+.redText {
+  color: #f44336;
+}
+.name {
+  display: flex;
+}
+.coinImage {
+  width: 30px;
+  height: 30px;
+  margin-right: 4px;
+}
+
+/* main--green button */
+#table .tableInner .greenBtn.viewMore {
+  margin-bottom: 28px;
+}
+
+/* main-footer */
+footer {
+  background: var(--blueBackground);
+  width: 100%;
+  padding: 40px 0;
+}
+footer .footerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  margin: auto;
+  /* height: 100%; */
+  width: 100%;
+  max-width: var(--innerWidth);
+}
+footer .footerInner > div {
+  display: flex;
+  flex-direction: column;
+  width: 24%;
+}
+footer .footerInner h3 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 40px;
+}
+footer .footerInner p,
+footer .footerInner a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+footer .footerInner a {
+  color: rgb(255, 255, 255);
+  opacity: 0.5;
+  display: inline;
+}
+
+footer .footerInner a:hover {
+  color: rgba(255, 255, 255, 1);
+  opacity: 1;
+}
+footer .footerInner > div:nth-child(2) div:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+}
+footer .footerInner div:nth-child(2) div:nth-child(2) {
+  margin-top: 24px;
+}
+footer .footerInner div:nth-child(3) .svgFollow {
+  display: flex;
+}
+footer .footerInner img {
+  padding-right: 12px;
+  margin-bottom: 8px;
+}
+
+/* coin styles */
+#blueBackground .blueBackgroundInner .coinLeft,
+#blueBackground .blueBackgroundInner .coinRight {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+#blueBackground .blueBackgroundInner .coinLeft {
+  width: 30%;
+}
+#blueBackground .blueBackgroundInner .coinRight {
+  width: 60%;
+}
+#blueBackground .blueBackgroundInner .coinLeft .headerCoin .titleCoin {
+  padding: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+#blueBackground .blueBackgroundInner .coinLeft .rankCoin {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgb(24, 198, 131);
+  border-bottom-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  text-align: center;
+  padding: 16px;
+  width: 54px;
+  display: inline-block;
+  color: white;
+  box-shadow: rgb(0 0 0 / 40%) 0px 2px 15px -3px;
+  position: relative;
+}
+#blueBackground .blueBackgroundInner .coinLeft .rankCoin::before {
+  content: "";
+  width: 74px;
+  height: 8px;
+  background: rgb(24, 198, 131);
+  position: absolute;
+  left: -10px;
+  top: 0px;
+  border-radius: 8px;
+}
+#blueBackground .blueBackgroundInner .coinLeft .rankCoin h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+#blueBackground .blueBackgroundInner .coinLeft .rankCoin p {
+  font-size: 9.8px;
+  font-weight: normal;
+}
+
+#blueBackground
+  .blueBackgroundInner
+  .coinLeft
+  .headerCoin
+  .priceCoin
+  span:nth-child(1) {
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 16px;
+}
+#blueBackground
+  .blueBackgroundInner
+  .coinLeft
+  .headerCoin
+  .priceCoin
+  span:nth-child(2) {
+  color: #18c683;
+  font-size: 18px;
+  font-weight: 700;
+}
+#blueBackground .blueBackgroundInner .coinRight .coinDataColumn > div {
+  font-size: 14px;
+  color: white;
+  margin-bottom: 8px;
+}
+#blueBackground
+  .blueBackgroundInner
+  .coinRight
+  .coinDataColumn
+  > div
+  .coinValue {
+  font-size: 18px;
+  font-weight: 700;
+}
+#blueBackground .blueBackgroundInner .coinRight .coinDataColumn .greenBtn {
+  margin-top: 24px;
+}
+
+
+
+#main {
+  background: var(--whiteBackground);
+  width: 100%;
+}
+#main .mainInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  height: 250px;
+  width: 100%;
+  max-width: var(--innerWidth);
+}
+#main .mainInner .leftMain .headerCoin .priceCoin{
+  display: flex;
+  margin: 0;
+  padding: 0;
+
+}
+#main .mainInner .leftMain .dataCoinChart img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 59.54px;
+  height: 59.54px;
+}
+

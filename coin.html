@@ -1,0 +1,209 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinCap.io | Reliable Cryptocurrency Prices and Market Capitalizations</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <section id="navbar">
+                <nav id="navbarInner">
+                    <div id="leftSideNavbar">
+                        <a href="https://coincap.io/">Coins</a>
+                        <a href="https://coincap.io/exchanges">Exchanges</a>
+                        <a href="https://coincap.io/swap">Swap</a>
+                    </div>
+                    <div id="midSideNavbar">
+                        <a href="https://coincap.io/"> <img src="./logos/black.svg" class="coinCapImage"></a>
+                    </div>
+                    <div id="rightSideNavbar">
+                        <div class="search">
+                            <input type="text" class="searchInput" />
+                            <button class="btnSearch">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-search">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-settings">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
+                        <a href="#" class="greenBtn">
+                            Connect Wallet
+                        </a>
+                    </div>
+                </nav>
+            </section>
+        </header>
+        <section id="blueBackground">
+            <div class="blueBackgroundInner">
+                <div class="coinLeft">
+                    <div class="rankCoin">
+                        <!-- <img src="./icons/bookmark-fill(1).svg" height="120px" /> -->
+                        <h2 class="rank"></h2>
+                        <p>RANK</p>
+                    </div>
+                    <div class="headerCoin">
+                        <div class="titleCoin"></div>
+                        <div class="priceCoin">
+                            <span class="price"></span>
+                            <span class="percentPrice" style="margin-right:0;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="coinRight">
+                    <div class="coinDataColumn">
+                        <div>
+                            Market Cap<br /><span class="coinValue">$408.16b</span>
+                        </div>
+                        <button class="greenBtn">Website</button>
+                    </div>
+                    <div class="coinDataColumn">
+                        <div>
+                            Volume(24Hr)<br /><span class="coinValue">$15.16b</span>
+                        </div>
+                        <button class="greenBtn">Explorer</button>
+                    </div>
+                    <div class="coinDataColumn">
+                        <div>Supply<br /><span class="coinValue">19.15m BTC</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <main id="main">
+            <section class="mainInner">
+                <div class="leftMain">
+                    <div class="dataCoinChart">
+                        <div>
+                            <img class="coinImage" src="./logos/btc@2x.png">
+                        </div>
+                        <div>
+                            <div class="coinNameChart"> bitcoin(btc)</div>
+                            <div class="dateChart">12 September 2022</div>
+                        </div>
+                        <div>
+                            <div class="highData">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                            <div class="lowData">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="averageData">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                            <div class="changeData">
+                                <h3></h3>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart"></div>
+                </div>
+                <div class="rightMain">
+                    <div>
+                        <h3>Swap</h3>
+                        <img src="./logos/settings.svg" alt="">
+                    </div>
+                    <div>
+                        <div>
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                        <div>
+                            <img src="" alt="">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <div>
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                        <div>
+                            <img src="" alt="">
+                            <div></div>
+                        </div>
+                    </div>
+                    <a></a>
+                </div>
+            </section>
+        </main>
+
+
+        <!-- footer -->
+        <footer>
+            <div class="footerInner">
+                <div>
+                    <h3>COINCAP.IO</h3>
+                    <a href="https://coincap.io/methodology">Methodology</a>
+                    <a href="https://shapeshift.zendesk.com/hc/en-us/requests/new">Support</a>
+                    <a href="https://docs.coincap.io/">Our API</a>
+                    <a href="https://coincap.io/rate-compare">Rate Comparison</a>
+                    <a href="https://shapeshift.com/contribute">Careers</a>
+                </div>
+                <div>
+                    <div>
+                        <h3>LEGALS</h3>
+                        <a
+                            href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://assets.coincap.io/documents/terms_of_service.pdf">Terms
+                            of Service</a>
+                        <a
+                            href="https://shapeshift.com/privacy?_ga=2.224769754.1534225968.1662028618-1707931228.1662028617">Privacy
+                            Policy</a>
+                    </div>
+                    <div>
+                        <h3>DISCLAIMER</h3>
+                        <p>Neither ShapeShift AG nor CoinCap are in any way associated with CoinMarketCap, LLC or any of
+                            its goods and services.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>FOLLOW US</h3>
+                    <div class="svgFollow">
+                        <a href="https://twitter.com/CoinCap_io"><img src="./logos/twitter.svg" alt="twitter"></a>
+                        <a href="https://www.facebook.com/watch/?v=365220420785166"><img src="./logos/facebook.svg"
+                                alt="facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>COINCAP APP AVAILABLE ON</h3>
+                    <div class="svgStore">
+                        <a href="https://play.google.com/store/apps/details?id=io.coinCap.coinCap" target="_blank"><img
+                                src="./logos/googleplay.svg" alt="google-play"></a>
+                        <a href="https://apps.apple.com/us/app/coincap/id1074052280?ign-mpt=uo%3D4" target="_blank"><img
+                                src="./logos/applestore.svg" alt="apple-store"></a>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="./main.js"></script>
+        <script src="./coin.js"></script>
+</body>
+
+</html>
