@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoinCap.io | Reliable Cryptocurrency Prices and Market Capitalizations</title>
+    <title>CoinCap.io</title>
+    <link rel="icon" href="./logos/black.svg">
     <link rel="stylesheet" href="./style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
@@ -52,10 +53,9 @@
             </section>
         </header>
         <section id="blueBackground">
-            <div class="blueBackgroundInner">
+            <div class="blueBackgroundInner coinPage">
                 <div class="coinLeft">
                     <div class="rankCoin">
-                        <!-- <img src="./icons/bookmark-fill(1).svg" height="120px" /> -->
                         <h2 class="rank"></h2>
                         <p>RANK</p>
                     </div>
@@ -70,18 +70,23 @@
                 <div class="coinRight">
                     <div class="coinDataColumn">
                         <div>
-                            Market Cap<br /><span class="coinValue">$408.16b</span>
+                            <span>Market Cap</span>
+                            <span class="coinValue marketCap"></span>
                         </div>
                         <button class="greenBtn">Website</button>
                     </div>
                     <div class="coinDataColumn">
                         <div>
-                            Volume(24Hr)<br /><span class="coinValue">$15.16b</span>
+                            <span> Volume(24Hr)</span>
+                            <span class="coinValue volume24hr"></span>
                         </div>
                         <button class="greenBtn">Explorer</button>
                     </div>
                     <div class="coinDataColumn">
-                        <div>Supply<br /><span class="coinValue">19.15m BTC</span></div>
+                        <div>
+                            <span>Supply</span>
+                            <span class="coinValue supplyCoin"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,66 +95,82 @@
         <main id="main">
             <section class="mainInner">
                 <div class="leftMain">
-                    <div class="dataCoinChart">
-                        <div>
-                            <img class="coinImage" src="./logos/btc@2x.png">
-                        </div>
-                        <div>
-                            <div class="coinNameChart"> bitcoin(btc)</div>
-                            <div class="dateChart">12 September 2022</div>
-                        </div>
-                        <div>
-                            <div class="highData">
-                                <h3></h3>
-                                <p></p>
+                    <div id="dataCoinChart">
+                        <div class="basicDataCoin">
+                            <div class="coinImgChart">
+                                <img class="coinImageLogo">
                             </div>
-                            <div class="lowData">
-                                <h3></h3>
-                                <p></p>
+                            <div id="coinNameInDate">
+                                <span class="coinNameChart"></span>
+                                <span class="dateChart"></span>
                             </div>
                         </div>
-                        <div>
-                            <div class="averageData">
-                                <h3></h3>
-                                <p></p>
+                        <div class="detailedDataCoin">
+                            <div class="dataBox">
+                                <div class="highData dataCoin">
+                                    <h3 class="grayText">HIGH</h3>
+                                    <p class="highContent paddingDataChart blackText"></p>
+                                </div>
+                                <div class="lowData dataCoin">
+                                    <h3 class="grayText">LOW</h3>
+                                    <p class="lowContent paddingDataChart blackText"></p>
+                                </div>
                             </div>
-                            <div class="changeData">
-                                <h3></h3>
-                                <p></p>
+                            <div class="dataBox">
+                                <div class="averageData dataCoin">
+                                    <h3 class="grayText">AVERAGE</h3>
+                                    <p class="averageContent paddingDataChart blackText"></p>
+                                </div>
+                                <div class="changeData dataCoin">
+                                    <h3 class="grayText">CHANGE</h3>
+                                    <p class="changeContent paddingDataChart greenText"></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="chart"></div>
+
+                    <div id="chart-container"></div>
                 </div>
                 <div class="rightMain">
-                    <div>
-                        <h3>Swap</h3>
-                        <img src="./logos/settings.svg" alt="">
-                    </div>
-                    <div>
-                        <div>
-                            <h4></h4>
-                            <p></p>
+                    <div class="swapContent">
+                        <div class="swapTitle">
+                            <h3>Swap</h3>
+                            <img src="./logos/settings.svg" alt="">
                         </div>
-                        <div>
-                            <img src="" alt="">
-                            <div></div>
+                        <div class="innerBox">
+                            <div><label class="grayText">You Sell</label></div>
+                            <div class="swapValue">
+                                <span class="value grayText">0</span>
+                                <div class="imgCoinSwap">
+                                    <img src="logos/btc@2x.png" />
+                                    <span>ETH</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="" alt="">
-                    </div>
-                    <div>
-                        <div>
-                            <h4></h4>
-                            <p></p>
+                        <div class="shuffleImg">
+                            <img src="logos/shuffle.svg" />
                         </div>
-                        <div>
-                            <img src="" alt="">
-                            <div></div>
+                        <div class="innerBox">
+                            <div><label class="grayText">You Get</label></div>
+                            <div class="swapValue">
+                                <span class="value grayText">0</span>
+                                <div class="imgCoinSwap">
+                                    <span>Select a Token</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
+                        <div class="btnContent"><button class="greenBtn">Connect Wallet</button></div>
                     </div>
-                    <a></a>
                 </div>
             </section>
         </main>
@@ -204,6 +225,10 @@
         </footer>
         <script src="./main.js"></script>
         <script src="./coin.js"></script>
+         <!-- <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script src="//cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <script src="//cdn.amcharts.com/lib/5/themes/Micro.js"></script>  -->
 </body>
 
 </html>

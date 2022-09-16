@@ -1,4 +1,4 @@
-// separator function 
+// separator function
 function separator(numb) {
   var str = numb.toString().split(".");
   str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -6,49 +6,63 @@ function separator(numb) {
 }
 
 //fixed function after 2 number
-function After2Decimal(number){
-  return Number.parseFloat(number).toFixed(2)
+function After2Decimal(number) {
+  return Number.parseFloat(number).toFixed(2);
+}
+//fixed function after 8 number
+function After8Decimal(number) {
+  return Number.parseFloat(number).toFixed(8);
 }
 
 // average with 2 number decimal
-function averageNumber(numbs){
-  let sum=0;
+function averageNumber(numbs) {
+  let sum = 0;
   let avg;
-  numbs.forEach((number)=>{
-    sum+=number;
+  numbs.forEach((number) => {
+    sum += number;
+  });
+  avg = sum / numbs.length;
+  return After2Decimal(avg);
+}
+
+// date function
+function compDate(charts){
+  let dateObject=[]
+  charts.forEach((chart)=>{
+      let timing = chart.date
+      let string = timing.toString().split("T")
+      let priceusdChart =After2Decimal(chart.priceUsd)
+       
+      
+      dateObject.push(
+          {
+              "date":String(string[0]),
+              "value":Number(priceusdChart)
+          }
+      )
+     
   })
-  avg=sum/number.length;
-  return After2Decimal(avg)
+  return dateObject;
 }
 
 // function for  label M/B/k instead od million and billion and etc.
-function convertToInternationalCurrencySystem (labelValue) {
-  
+function convertToInternationalCurrencySystem(labelValue) {
   // Twelve Zeroes for Trillion
-  return Math.abs(Number(labelValue)) >= 1.0e+12
-
-  
-  ? (Math.abs(Number(labelValue)) / 1.0e+12).toFixed(2) + "T"
-   // Nine Zeroes for Billions
-  : Math.abs(Number(labelValue)) >= 1.0e+9
-
-  ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
-
-  // Six Zeroes for Millions 
-  : Math.abs(Number(labelValue)) >= 1.0e+6
-
-  ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
-  
-  // Three Zeroes for Thousands
-  : Math.abs(Number(labelValue)) >= 1.0e+3
-
-  ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
-
-  : Math.abs(Number(labelValue));
-
+  return Math.abs(Number(labelValue)) >= 1.0e12
+    ? (Math.abs(Number(labelValue)) / 1.0e12).toFixed(2) + "T"
+    : // Nine Zeroes for Billions
+    Math.abs(Number(labelValue)) >= 1.0e9
+    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + "B"
+    : // Six Zeroes for Millions
+    Math.abs(Number(labelValue)) >= 1.0e6
+    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(2) + "M"
+    : // Three Zeroes for Thousands
+    Math.abs(Number(labelValue)) >= 1.0e3
+    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(2) + "K"
+    : Math.abs(Number(labelValue));
 }
 
-
+// variables of fetch 
 
 let urlNew = "https://api.coincap.io/v2/assets";
 
@@ -62,49 +76,178 @@ fetch(urlNew)
   .then(function recievedData(res) {
     console.log(res);
     return res.json();
-
   })
   .then(function soWhat(input) {
     let listItem = input.data;
     console.log(listItem);
-     creatCoin(listItem); 
- 
+    creatCoin(listItem);
+  });
+
+let chartUrl = "https://api.coincap.io/v2/assets/" + id + "/history?interval=d1"
+fetch(chartUrl)
+    .then(function recievedDataChart(response) {
+      console.log(response);
+        return response.json();
+    })
+    .then(function unique(inputData) {
+        let itemOfList = inputData.data;
+        let dateCoin = compDate(itemOfList);
+        // creat_chart(dateCoin);
+        coinChartData(itemOfList);
+        createChartCoin(dateCoin);
+    })
 
 
-    
-    
-function creatCoin(listItem){
-  listItem.forEach((fileItem) => {
-    let dataId=fileItem.id;
-    
+
+function creatCoin(listItem) {
+  listItem.forEach((coin) => {
+    let dataId = coin.id;
+
     // console.log(dataId);
-    if(dataId==id){
-      function changeItems(){
-        let changePercent=Number(After2Decimal(fileItem.changePercent24Hr)) ;
-        if (changePercent< 0){
-          percentPrice.classList.remove("greenText");
-          percentPrice.classList.add("redText");
+    if (dataId == id) {
+      function changeItems(content) {
+        let changePercent = Number(After2Decimal(coin.changePercent24Hr));
+        if (changePercent < 0) {
+          content.classList.remove("greenText");
+          content.classList.add("redText");
         }
-        percentPrice.textContent=changePercent+"%";
-       }
-      let rankNum=document.querySelector(".rank");
-      rankNum.textContent=fileItem.rank;
+        return changePercent;
+      }
 
-      let coinNameAndId=document.querySelector(".titleCoin");
-      coinNameAndId.textContent=fileItem.name+"("+fileItem.symbol+")";
+      let photoCoin =
+        "https://assets.coincap.io/assets/icons/" +
+        coin.symbol.toLowerCase() +
+        "@2x.png";
+      let today = new Date();
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      let day = today.getDate();
+      let month = monthNames[today.getMonth()];
+      let year = today.getFullYear();
 
-      let coinPrice=document.querySelector(".price");
-      coinPrice.textContent="$"+ separator(After2Decimal(fileItem.priceUsd));
+      // header blue
+
+      let rankNum = document.querySelector(".rank");
+      rankNum.textContent = coin.rank;
+
+      let coinNameAndId = document.querySelector(".titleCoin");
+      coinNameAndId.textContent = coin.name + " " + "(" + coin.symbol + ")";
+
+      let coinPrice = document.querySelector(".price");
+      coinPrice.textContent = "$" + separator(After2Decimal(coin.priceUsd));
 
       let percentPrice = document.querySelector(".percentPrice");
-      percentPrice.classList.add("largeText","greenText","mediumBox")
-      changeItems();
-      
+      percentPrice.classList.add("largeText", "greenText");
+      percentPrice.textContent = changeItems(percentPrice) + "%";
+
+      let marketcapCoin = document.querySelector(".marketCap");
+      marketcapCoin.textContent =
+        "$" + convertToInternationalCurrencySystem(coin.marketCapUsd);
+
+      let volume = document.querySelector(".volume24hr");
+      volume.textContent =
+        "$" + convertToInternationalCurrencySystem(coin.volumeUsd24Hr);
+
+      let supply = document.querySelector(".supplyCoin");
+      supply.textContent =
+        convertToInternationalCurrencySystem(coin.supply) + " " + coin.symbol;
+
+      // main coin chart
+      let coinImgLogo = document.querySelector(".coinImageLogo");
+      coinImgLogo.setAttribute("src", photoCoin);
+
+      let coinNameChart = document.querySelector(
+        ".coinNameChart",
+        ".blackText"
+      );
+      coinNameChart.textContent = coin.name + " " + "(" + coin.symbol + ")";
+
+      let dateChart = document.querySelector(".dateChart");
+      dateChart.classList.add("largeText");
+      dateChart.textContent = day + " " + month + " " + year;
+
+      let ChangeChart = document.querySelector(".changeContent");
+      ChangeChart.textContent = changeItems(ChangeChart);
     }
-  })
+  });
+};
+
+
+function coinChartData(list) {
+  let numbers=[]
+  list.forEach((itemInList)=>{
+      numberChart = Number(itemInList.priceUsd);
+       numbers.push(numberChart);
+  });
+  
+  let averagePriceChart = numbers.reduce((x, y) => x + y, 0) / numbers.length;
+  let maximumPriceChart = Math.max(...numbers)
+  let minimumPriceChart = Math.min(...numbers)
+
+  let HighDataChart = document.querySelector(".highContent");
+  HighDataChart.textContent =  "$" + separator(After2Decimal(maximumPriceChart));
+
+  let LowDataChart = document.querySelector(".lowContent");
+  LowDataChart.textContent =  "$" + separator(After8Decimal(minimumPriceChart));
+
+  let AverageDataChart = document.querySelector(".averageContent");
+  AverageDataChart.textContent =  "$" + separator(After2Decimal(averagePriceChart));
+
 }
 
+// chart
+
+/*function createChartCoin(inputData){
+
+const dataSource = {
+  chart: {
+    caption: "",
+    subcaption: "",
+    yaxisname: "price",
+    xaxisname: "Date",
+    forceaxislimits: "1",
+    pixelsperpoint: "0",
+    pixelsperlabel: "30",
+    compactdatamode: "1",
+    dataseparator: "|",
+    theme: "fusion"
+  },
+  categories: [
+    {
+      category:
+        "Jan 01|Jan 02|Jan 03|Jan 04|Jan 05|Jan 06|Jan 07|Jan 08|Jan 09|Jan 10|Jan 11|Jan 12|Jan 13|Jan 14|Jan 15|Jan 16|Jan 17|Jan 18|Jan 19|Jan 20|Jan 21|Jan 22|Jan 23|Jan 24|Jan 25|Jan 26|Jan 27|Jan 28|Jan 29|Jan 30|Jan 31|Feb 01|Feb 02|Feb 03|Feb 04|Feb 05|Feb 06|Feb 07|Feb 08|Feb 09|Feb 10|Feb 11|Feb 12|Feb 13|Feb 14|Feb 15|Feb 16|Feb 17|Feb 18|Feb 19|Feb 20|Feb 21|Feb 22|Feb 23|Feb 24|Feb 25|Feb 26|Feb 27|Feb 28|Mar 01|Mar 02|Mar 03|Mar 04|Mar 05|Mar 06|Mar 07|Mar 08|Mar 09|Mar 10|Mar 11|Mar 12|Mar 13|Mar 14|Mar 15|Mar 16|Mar 17|Mar 18|Mar 19|Mar 20|Mar 21|Mar 22|Mar 23|Mar 24|Mar 25|Mar 26|Mar 27|Mar 28|Mar 29|Mar 30|Mar 31|Apr 01|Apr 02|Apr 03|Apr 04|Apr 05|Apr 06|Apr 07|Apr 08|Apr 09|Apr 10|Apr 11|Apr 12|Apr 13|Apr 14|Apr 15|Apr 16|Apr 17|Apr 18|Apr 19|Apr 20|Apr 21|Apr 22|Apr 23|Apr 24|Apr 25|Apr 26|Apr 27|Apr 28|Apr 29|Apr 30|May 01|May 02|May 03|May 04|May 05|May 06|May 07|May 08|May 09|May 10|May 11|May 12|May 13|May 14|May 15|May 16|May 17|May 18|May 19|May 20|May 21|May 22|May 23|May 24|May 25|May 26|May 27|May 28|May 29|May 30|May 31|Jun 01|Jun 02|Jun 03|Jun 04|Jun 05|Jun 06|Jun 07|Jun 08|Jun 09|Jun 10|Jun 11|Jun 12|Jun 13|Jun 14|Jun 15|Jun 16|Jun 17|Jun 18|Jun 19|Jun 20|Jun 21|Jun 22|Jun 23|Jun 24|Jun 25|Jun 26|Jun 27|Jun 28|Jun 29|Jun 30|Jul 01|Jul 02|Jul 03|Jul 04|Jul 05|Jul 06|Jul 07|Jul 08|Jul 09|Jul 10|Jul 11|Jul 12|Jul 13|Jul 14|Jul 15|Jul 16|Jul 17|Jul 18|Jul 19|Jul 20|Jul 21|Jul 22|Jul 23|Jul 24|Jul 25|Jul 26|Jul 27|Jul 28|Jul 29|Jul 30|Jul 31|Aug 01|Aug 02|Aug 03|Aug 04|Aug 05|Aug 06|Aug 07|Aug 08|Aug 09|Aug 10|Aug 11|Aug 12|Aug 13|Aug 14|Aug 15|Aug 16|Aug 17|Aug 18|Aug 19|Aug 20|Aug 21|Aug 22|Aug 23|Aug 24|Aug 25|Aug 26|Aug 27|Aug 28|Aug 29|Aug 30|Aug 31|Sep 01|Sep 02|Sep 03|Sep 04|Sep 05|Sep 06|Sep 07|Sep 08|Sep 09|Sep 10|Sep 11|Sep 12|Sep 13|Sep 14|Sep 15|Sep 16|Sep 17|Sep 18|Sep 19|Sep 20|Sep 21|Sep 22|Sep 23|Sep 24|Sep 25|Sep 26|Sep 27|Sep 28|Sep 29|Sep 30|Oct 01|Oct 02|Oct 03|Oct 04|Oct 05|Oct 06|Oct 07|Oct 08|Oct 09|Oct 10|Oct 11|Oct 12|Oct 13|Oct 14|Oct 15|Oct 16|Oct 17|Oct 18|Oct 19|Oct 20|Oct 21|Oct 22|Oct 23|Oct 24|Oct 25|Oct 26|Oct 27|Oct 28|Oct 29|Oct 30|Oct 31|Nov 01|Nov 02|Nov 03|Nov 04|Nov 05|Nov 06|Nov 07|Nov 08|Nov 09|Nov 10|Nov 11|Nov 12|Nov 13|Nov 14|Nov 15|Nov 16|Nov 17|Nov 18|Nov 19|Nov 20|Nov 21|Nov 22|Nov 23|Nov 24|Nov 25|Nov 26|Nov 27|Nov 28|Nov 29|Nov 30|Dec 01|Dec 02|Dec 03|Dec 04|Dec 05|Dec 06|Dec 07|Dec 08|Dec 09|Dec 10|Dec 11|Dec 12|Dec 13|Dec 14|Dec 15|Dec 16|Dec 17|Dec 18|Dec 19|Dec 20|Dec 21|Dec 22|Dec 23|Dec 24|Dec 25|Dec 26|Dec 27|Dec 28|Dec 29|Dec 30|Dec 31"
+    }
+  ],
+  dataset: [
+    {
+      seriesname: "Sold",
+      data:
+        "2140|2160|1667|1645|1740|1932|1127|1137|1172|1181|1142|1134|1117|1147|1141|1149|1150|1113|1119|1110|1092|1102|1128|1131|1083|1081|1087|1088|1092|1609|1112|1065|1063|1057|1045|1043|1078|1083|1043|2039|1036|1031|1048|1056|1074|1045|1037|1034|1039|1031|1045|2048|2031|2019|2026|2017|2011|2022|2027|2022|1017|1019|1010|1015|1023|1029|1020|1009|2012|2008|2015|2027|1033|1008|1007|1009|1010|1013|1017|1024|1012|1009|1007|1009|1011|1015|1020|1004|1009|1011|1028|1037|1049|1057|1045|1047|1056|1068|1077|1089|1100|1090|1086|1094|1098|1101|1125|1131|1111|1102|1109|1099|1094|1112|1121|1102|1094|1087|1089|1097|2139|1148|1131|1127|1129|1122|1137|1158|1174|1145|1143|1137|2139|2147|2156|1162|1134|1127|1130|1123|1117|1137|1138|1117|2109|1107|1100|1107|1120|2122|2120|2112|1100|1094|1090|1100|2102|2052|2054|2044|2047|1063|1077|2080|2050|1047|1030|1022|1021|1022|1025|1015|1009|1010|1007|2002|1010|1020|2000|1994|2990|2987|2910|2001|999|982|977|967|966|974|990|987|974|977|969|962|967|972|977|961|957|959|960|958|967|970|959|954|962|961|957|980|987|977|976|979|982|983|1000|1009|994|999|1002|1009|1015|1024|1029|1020|1011|1009|1015|1010|1025|1031|1019|1018|1022|1014|1018|1022|1025|1010|1022|1017|1019|1010|1015|1023|1029|1020|1009|1012|1008|1015|1027|1033|1008|1007|1009|1010|1013|1017|1024|1012|1009|1007|1009|1011|1015|1020|1004|1009|1045|1043|1078|1083|1043|1039|1036|1031|1048|1056|1074|1045|1037|1034|1039|1031|1045|1048|1031|1019|1026|1017|1011|1022|1027|1022|1020|1023|1024|1025|1040|1057|1035|1033|1037|1047|1049|1068|1074|1052|1059|1064|1860|1064|1080|1089|1080|2081|2079|2086|2084|2090|2099|2090|2391|1088|1084|1082|1089|1100|1094|1127|1129|1122|1137|1158|1174|1145|1143|1137|1139|1947|2156|2162|2134|1927|1930|1923|1917|1937|1938|1117|1109|1907|2100|2107|2137|1640|1620|1827|2130|2131"
+    }
+  ]
+};
+
+FusionCharts.ready(function() {
+  var myChart = new FusionCharts({
+    type: "zoomline",
+    renderAt: "chart-container",
+    width: "100%",
+    height: "100%",
+    dataFormat: "json",
+    dataSource
+  }).render();
 });
-
-
-
+}
+*/

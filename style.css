@@ -164,7 +164,7 @@ header #navbar #navbarInner #rightSideNavbar > svg {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin:0 auto;
+  margin: 0 auto;
   height: 100%;
   width: 100%;
   max-width: var(--innerWidth);
@@ -357,9 +357,14 @@ footer .footerInner img {
 }
 
 /* coin styles */
+
+/* #blueBackground .blueBackgroundInner.coinPage {
+  padding-top: 52px; 
+} */
+
 #blueBackground .blueBackgroundInner .coinLeft,
 #blueBackground .blueBackgroundInner .coinRight {
-  margin-top: 24px;
+  margin-top: 72px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -371,23 +376,23 @@ footer .footerInner img {
 #blueBackground .blueBackgroundInner .coinRight {
   width: 60%;
 }
+
 #blueBackground .blueBackgroundInner .coinLeft .headerCoin .titleCoin {
   padding: 0;
   font-size: 28px;
   font-weight: 700;
 }
 #blueBackground .blueBackgroundInner .coinLeft .rankCoin {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   background: rgb(24, 198, 131);
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
   text-align: center;
   padding: 16px;
   width: 54px;
-  display: inline-block;
   color: white;
   box-shadow: rgb(0 0 0 / 40%) 0px 2px 15px -3px;
   position: relative;
@@ -405,10 +410,17 @@ footer .footerInner img {
 #blueBackground .blueBackgroundInner .coinLeft .rankCoin h2 {
   font-size: 28px;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
+
 #blueBackground .blueBackgroundInner .coinLeft .rankCoin p {
   font-size: 9.8px;
   font-weight: normal;
+}
+#blueBackground .blueBackgroundInner .coinLeft .headerCoin .priceCoin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #blueBackground
@@ -430,11 +442,14 @@ footer .footerInner img {
   color: #18c683;
   font-size: 18px;
   font-weight: 700;
+  padding: 0;
 }
 #blueBackground .blueBackgroundInner .coinRight .coinDataColumn > div {
   font-size: 14px;
   color: white;
   margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
 }
 #blueBackground
   .blueBackgroundInner
@@ -449,8 +464,6 @@ footer .footerInner img {
   margin-top: 24px;
 }
 
-
-
 #main {
   background: var(--whiteBackground);
   width: 100%;
@@ -460,21 +473,113 @@ footer .footerInner img {
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  height: 250px;
+  
   width: 100%;
   max-width: var(--innerWidth);
 }
-#main .mainInner .leftMain .headerCoin .priceCoin{
-  display: flex;
-  margin: 0;
-  padding: 0;
-
+#main .mainInner .leftMain{
+  width: 70%;
 }
-#main .mainInner .leftMain .dataCoinChart img{
+#main .mainInner .leftMain #dataCoinChart{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#main .mainInner .leftMain #dataCoinChart .basicDataCoin{
+  display: flex;
+  align-items: center;
+}
+#main .mainInner .leftMain #dataCoinChart .basicDataCoin .coinImgChart{
+  margin-right: 1rem;
+}
+#main .mainInner .leftMain #dataCoinChart .basicDataCoin #coinNameInDate{
+  display: flex;
+  flex-direction: column;
+}
+#main .mainInner .leftMain #dataCoinChart .basicDataCoin #coinNameInDate .coinNameChart{
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+#main .mainInner .leftMain #dataCoinChart .detailedDataCoin{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#main .mainInner .leftMain #dataCoinChart .detailedDataCoin .dataBox{
+  font-size: 14px;
+  padding: 1rem 1rem; 
+}
+#main .mainInner .leftMain #dataCoinChart .detailedDataCoin .dataBox div:nth-child(1){
+  margin-bottom: 2rem;
+}
+#main .mainInner .leftMain #dataCoinChart .detailedDataCoin .dataCoin{
+  display: flex;
+}
+#main .mainInner .leftMain #dataCoinChart .detailedDataCoin .dataCoin .paddingDataChart{
+  padding-left: 0.875rem;
+}
+
+#main .mainInner .rightMain{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 59.54px;
-  height: 59.54px;
+  flex-grow: 1;
+}
+#main .mainInner .rightMain .swapContent{
+  width: 360px;
+  height: 400px;
+  margin: 4rem 0;
+  padding: 1.25rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 9px;
+  border-radius: 0.5rem;
+ 
+}
+
+#main .mainInner .rightMain .swapContent .swapTitle{
+  display: flex;
+  justify-content: space-between;
+}
+#main .mainInner .rightMain .swapContent .innerBox{
+  background: var(--grayBackground);
+  border :1px solid rgba(128, 128, 128, 0.4) ;
+  border-radius: 8px;
+  padding: 14px;
+  margin: 14px 0;
+  font-weight: 700;
+}
+
+#main .mainInner .rightMain .swapContent .innerBox .swapValue {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+#main .mainInner .rightMain .swapContent .innerBox .swapValue .imgCoinSwap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+#main .mainInner .rightMain .swapContent .innerBox .swapValue .imgCoinSwap:hover{
+  color: var(--greenBtn);
+}
+#main .mainInner .rightMain .swapContent .innerBox .swapValue .imgCoinSwap span{
+  margin: 0 10px;
+}
+
+#main .mainInner .rightMain .swapContent .innerBox .swapValue img{
+  height: 26px;
+  width: auto;
+}
+#main .mainInner .rightMain .swapContent .shuffleImg{
+  margin: 1rem;
+  width: 1.5rem;
+  display: block;
+  color: var(--greenBtn);
 }
 
